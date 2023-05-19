@@ -1,0 +1,52 @@
+# Function to check whether queen can be
+# placed in current position or not.
+def place(pos, cnt, a):
+    for i in range(1, pos):
+        if ((a[i] == a[pos]) or ((abs(a[i] - a[pos]) == abs(i - pos)))):
+            return False
+    return True
+ 
+# Function to print out the chess board
+def print_sol(N, cnt, a):
+    cnt += 1
+    print("\n\nSolution " , cnt ,  ":\n")
+    for i in range(1,N+1):
+        for j in range(1,N+1):
+            if (a[i] == j):
+                print("Q\t",end = "")
+            else:
+                print("*\t",end="")
+        print("")
+         
+    return cnt
+ 
+# Function to place N queens on
+# a N*N chess borad such that
+# no queen attacks each other
+def queen(n,cnt,a):
+    k = 1
+    a[k] = 0
+    while (k != 0):
+        a[k] = a[k] + 1
+        while ((a[k] <= n) and place(k,cnt,a)!=True):
+            a[k] += 1
+        if (a[k] <= n):
+            if (k == n):
+                cnt = print_sol(n,cnt,a)
+            else:
+                k += 1
+                a[k] = 0
+        else:
+            k -= 1
+             
+    return cnt
+ 
+# Driver Code
+N = 4
+a = [0] * 30
+cnt = 0
+ 
+# Function call
+cnt = queen(N,cnt,a)
+print("\nTotal solutions= " , cnt)
+ 
