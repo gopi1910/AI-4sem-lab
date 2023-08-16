@@ -1,0 +1,9 @@
+C = int(input("Enter Your Celsius val :"))
+
+formula = C * 9/5 + 32
+print(formula)
+
+if (C > 0):
+    print("Your Celsius value is not below freezing point")
+else:
+    print("Your Celsius value is below freezing point")v
